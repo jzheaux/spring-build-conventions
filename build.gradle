@@ -28,13 +28,16 @@ configurations {
 dependencies {
 	// NOTE: Using gradle-versions-plugin:0.17.0 to avoid https://github.com/ben-manes/gradle-versions-plugin/issues/255
 	compile 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-	compile 'gradle.plugin.org.gretty:gretty:2.2.0'
+	compile ('gradle.plugin.org.gretty:gretty:2.2.0') {
+		exclude group: 'org.apache.servicemix.bundles', module: 'org.apache.servicemix.bundles.bcprov-jdk16'
+	}
 	compile 'io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.11.0'
 	compile 'io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE'
 	compile 'io.spring.gradle:docbook-reference-plugin:0.3.1'
 	compile 'io.spring.gradle:propdeps-plugin:0.0.10.RELEASE'
 	compile 'io.spring.gradle:spring-io-plugin:0.0.8.RELEASE'
 	compile 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.8.1'
+	compile 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.15'
 	compile 'org.hidetake:gradle-ssh-plugin:2.9.0'
 	compile 'org.jfrog.buildinfo:build-info-extractor-gradle:4.7.5'
 	compile 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2'

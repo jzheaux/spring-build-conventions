@@ -1,11 +1,10 @@
 package io.spring.gradle.convention
 
-import org.gradle.api.Task
-import org.gradle.api.plugins.JavaPlugin
-import org.gradle.api.plugins.PluginManager
-import org.gradle.api.tasks.bundling.Zip
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.Task
+import org.gradle.api.plugins.PluginManager
+import org.gradle.api.tasks.bundling.Zip
 
 /**
  * Aggregates asciidoc, javadoc, and deploying of the docs into a single plugin
@@ -49,7 +48,7 @@ public class DocsPlugin implements Plugin<Project> {
 		String projectName = Utils.getProjectName(project);
 
 		project.tasks.asciidoctor {
-			backends = ['docbook5','html5']
+			backends = ['docbook5','pdf','html5']
 			def ghTag = 'master'//snapshotBuild ? 'master' : project.version
 			def ghUrl = "https://github.com/spring-projects/${projectName}/tree/$ghTag"
 			options = [

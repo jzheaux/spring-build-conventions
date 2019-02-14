@@ -30,7 +30,10 @@ class DocsPluginITest extends Specification {
 	def "build triggers docs"() {
 		when:
 		BuildResult result = testKit.withProjectResource("samples/docs/simple/")
-			.withArguments('build')
+			.withArguments('build', "--stacktrace", "--debug")
+			// for this to work completely, add an environment variable called org.gradle.testkit.debug=true to your
+			// test classpath
+			.withDebug(true)
 			.build();
 		then:
 		result.task(":build").outcome == SUCCESS
